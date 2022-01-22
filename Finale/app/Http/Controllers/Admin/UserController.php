@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Actions\Fortify\CreateNewUser;
 use App\Http\Controllers\Controller;
 use App\Models\Role;
 use App\Models\User;
@@ -50,11 +51,14 @@ class UserController extends Controller
      */
     public function store(StoreUserequest $request)
     {
-        $validatedData = $request->validated();
+        //$validatedData = $request->validated();
+        //$user = User::create($validatedData);
 
-        $user = User::create($validatedData);
-
+        $newUser = new CreateNewUser();
+        $user = $newUser->create($request->only(['name', 'email', 'password', 'password_confirmation']));
         $user->roles()->sync($request->roles);
+        
+        Password::sendResetLink($request->only(['email']));
         $request->session()->flash('success', 'You have created the user');
 
         return redirect(route(name: 'admin.users.index'));

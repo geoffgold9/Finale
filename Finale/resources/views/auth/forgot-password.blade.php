@@ -1,6 +1,6 @@
 @extends('templates.main')
 @section('content')
-<h1>Login<h1>
+<h1>Reset Password<h1>
 
 <div class="container">
         <div class="card login-card">
@@ -34,17 +34,7 @@
                                     </span>
                                 @enderror
                             </div>
-                            <div class="form-group mb-4">
-                                <label for="password" class="sr-only">Password</label>
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password" placeholder="Password">
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                       {{ $message }}
-                                    </span>
-                                @enderror
-        </div>
-        <button type="submit" class="btn btn-primary">Login</button>
+        <button type="submit" class="btn btn-primary">Reset Password</button>
 </form>
-<a href="{{route('password.request') }}">Forgotten your password? Reset it here</a>
 @endsection
 
