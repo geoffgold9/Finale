@@ -33,10 +33,9 @@ Auth::routes();
 
     });
 
-    Route::get('customURL','YourController@defaultmethod')->name('admin.users.index');
+    Route::get('/customUrl','UserController@index')->name('admin.users.index');
     Route::get('/home', 'HomeController@index')->middleware(['web','auth']);
     Route::get('/admin-panel', 'AdminController@index')->middleware(['web','auth']);
-    
     Route::get('/users', 'UsersController@index')->middleware(['web','auth']);
     Route::get('/users/create', 'UsersController@create')->middleware(['web','auth']);
     Route::post('/users/store', 'UsersController@store')->middleware(['web','auth']);
@@ -53,6 +52,8 @@ Auth::routes();
     Route::put('/profile', 'ProfileController@update')->middleware(['web','auth']);
 
     Route::get('/Users', 'UserController@index');
+
+   
 
     
 

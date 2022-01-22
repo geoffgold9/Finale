@@ -4,6 +4,11 @@
  * building robust, powerful web applications using React + Laravel.
  */
 
+
+
+
+
+
 require('./bootstrap');
 
 /**
@@ -13,3 +18,16 @@ require('./bootstrap');
  */
 
 require('./components/Example');
+
+
+import Vue from 'vue'
+
+window.app = new Vue({
+    el: '#app',
+})
+
+Vue.component('two-factor-auth', require('./components/TwoFactorAuth').default)
+
+window.app = new Vue({
+    el: '#app',
+})
